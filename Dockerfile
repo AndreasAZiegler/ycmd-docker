@@ -1,5 +1,4 @@
-#FROM ubuntu:18.10
-FROM realsense
+FROM ubuntu:18.10
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
@@ -30,7 +29,7 @@ RUN python3 build.py \
       --go-completer \
       --java-completer \
       --js-completer \
-      --rust-completer
-#      --system-libclang
+      --rust-completer \
+      --system-libclang
 
 ENTRYPOINT ["/usr/bin/python3", "/ycmd/ycmd"]
