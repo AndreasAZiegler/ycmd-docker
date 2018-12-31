@@ -37,6 +37,6 @@ push: ycmd-image.tar
 test: ycmd-image.tar
 	docker load --input="ycmd-image.tar"
 	# Point to our newly built image when testing.
-	sed -ri 's|(alexandrecarlton/ycmd)|\1:build|' ycmd-python
+	sed -ri 's|(alexandrecarlton/ycmd)|\1:build|' /usr/bin/ycmd-python
 	python3 tests/example_client.py
 .PHONY: test
