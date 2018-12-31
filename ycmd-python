@@ -15,11 +15,8 @@ get_arg() {
 }
 
 port="$(get_arg port "$@")"
-echo "$port" >> port.txt
 options_file="$(get_arg options_file "$@")"
-echo "$options_file" >> options_file.txt
 idle_suicide_seconds="$(get_arg idle_suicide_seconds "$@")"
-echo "$idle_suicide_seconds" >> idle_suicide_seconds.txt
 # We use:
 #  --publish=<port>:<port> so we communicate with ycmd
 #  --rm to kill the container once we're done with it.
