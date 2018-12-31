@@ -56,7 +56,7 @@ docker run \
   --device=/dev/video7:/dev/video7 \
   --runtime="nvidia" \
   --volume="${options_file}:${options_file}:ro" \
-  alexandrecarlton/ycmd:build \
+  realsense/ycmd:build \
     --host='0.0.0.0' \
     --port="${port}" \
     --options_file="${options_file}" \
