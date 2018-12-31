@@ -28,38 +28,13 @@ echo "$idle_suicide_seconds" >> idle_suicide_seconds.txt
 #  --host=0.0.0.0 since Docker desires that we bind servers to listen on this address.
 
 docker run \
-  --name="ycmd-$self" \
+  --name="ycmd-$$" \
   --rm \
   --publish="${port}:${port}" \
-  --user="1000:1000" \
-  --env="DISPLAY" \
-  --env="QT_X11_NO_MITSHM=1" \
-  --workdir="/home/$USER" \
-  --volume="/home/$USER:/home/$USER" \
-  --volume="/etc/group:/etc/group:ro" \
-  --volume="/etc/passwd:/etc/passwd:ro" \
-  --volume="/etc/shadow:/etc/shadow:ro" \
-  --volume="/etc/sudoers.d:/etc/sudoers.d:ro" \
-  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-  --env="XAUTHORITY=$XAUTH" \
-  --volume="$XAUTH:$XAUTH" \
-  --device="/dev/dri:/dev/dri" \
-  --privileged \
-  -v /dev/video/ \
-  --device=/dev/video0:/dev/video0 \
-  --device=/dev/video1:/dev/video1 \
-  --device=/dev/video2:/dev/video2 \
-  --device=/dev/video3:/dev/video3 \
-  --device=/dev/video4:/dev/video4 \
-  --device=/dev/video5:/dev/video5 \
-  --device=/dev/video6:/dev/video6 \
-  --device=/dev/video7:/dev/video7 \
-  --runtime="nvidia" \
+  --volume="${HOME}:${HOME}" \
   --volume="${options_file}:${options_file}:ro" \
-  alexandrecarlton/ycmd:build \
+  alexandrecarlton/ycmd \
     --host='0.0.0.0' \
     --port="${port}" \
     --options_file="${options_file}" \
     --idle_suicide_seconds="${idle_suicide_seconds}"
-
- 
